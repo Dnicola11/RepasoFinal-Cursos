@@ -40868,9 +40868,6 @@ var router = createBrowserRouter([{
   path: '/nueva-sede',
   element: /*#__PURE__*/React.createElement(NuevaSedePage, null)
 }, {
-  path: '/ver-sede/:id',
-  element: /*#__PURE__*/React.createElement(VerSedePage, null)
-}, {
   path: '/editar-curso/:id',
   element: /*#__PURE__*/React.createElement(EditarCursoPage, null)
 }]);
@@ -40976,7 +40973,7 @@ var EditarCursoPage = function EditarCursoPage() {
         nombre: e.target.value
       }));
     }
-  }), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", null, "Categoria"), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
+  }), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", null, "Creditos"), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
     type: "number",
     id: "creditos",
     name: "creditos",
@@ -41400,10 +41397,6 @@ var NuevoCursoPage = function NuevoCursoPage() {
     _useState4 = _slicedToArray(_useState3, 2),
     creditos = _useState4[0],
     setCreditos = _useState4[1];
-  var _useState5 = useState(''),
-    _useState6 = _slicedToArray(_useState5, 2),
-    modalidad = _useState6[0],
-    setModalidad = _useState6[1];
   var handleSubmit = function handleSubmit(evento) {
     evento.preventDefault();
     client({
@@ -41411,8 +41404,7 @@ var NuevoCursoPage = function NuevoCursoPage() {
       path: '/api/cursos',
       entity: {
         nombre: nombre,
-        creditos: creditos,
-        modalidad: modalidad
+        creditos: creditos
       },
       headers: {
         'Content-Type': 'application/json'
@@ -41436,13 +41428,6 @@ var NuevoCursoPage = function NuevoCursoPage() {
     name: "creditos",
     onChange: function onChange(eCreditos) {
       return setCreditos(eCreditos.target.value);
-    }
-  }), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", null, "Modalidad"), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
-    type: "text",
-    id: "modalidad",
-    name: "modalidad",
-    onChange: function onChange(eModalidad) {
-      return setModalidad(eModalidad.target.value);
     }
   }), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
     type: "submit",
@@ -41473,7 +41458,8 @@ var _require = __webpack_require__(/*! react-router-dom */ "./node_modules/react
   Link = _require.Link,
   useParams = _require.useParams;
 var _require2 = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
-  useState = _require2.useState;
+  useState = _require2.useState,
+  useEffect = _require2.useEffect;
 var client = __webpack_require__(/*! ../client */ "./src/main/js/client.js");
 var VerCarreraPage = function VerCarreraPage() {
   var _useParams = useParams(),
@@ -41536,7 +41522,8 @@ var _require = __webpack_require__(/*! react-router-dom */ "./node_modules/react
   Link = _require.Link,
   useParams = _require.useParams;
 var _require2 = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
-  useState = _require2.useState;
+  useState = _require2.useState,
+  useEffect = _require2.useEffect;
 var client = __webpack_require__(/*! ../client */ "./src/main/js/client.js");
 var VerCursoPage = function VerCursoPage() {
   var _useParams = useParams(),

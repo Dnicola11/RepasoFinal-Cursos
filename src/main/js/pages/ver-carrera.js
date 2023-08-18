@@ -1,13 +1,13 @@
 const React = require('react');
 const { Link, useParams } = require('react-router-dom');
-const {useState} = require('react');
+const {useState, useEffect } = require('react');
 const client = require('../client');
 
 const VerCarreraPage = () => {
 
     let { id } = useParams();
     const [carrera, setCarrera] = useState({});
-    const [sedes, setSedes] = useState([]);
+    const [aula, setAulas] = useState([]);
 
     useEffect(() => {
         client({
@@ -16,8 +16,8 @@ const VerCarreraPage = () => {
         }).done(response=>setCarrera(response.entity))
         client({
             method: 'GET',
-            path: '/api/sedes/' + id + '/informacion'
-        }).done(response => setSedes(response.entity))
+            path: '/api/aulas/' + id + '/informacion'
+        }).done(response => setAulas(response.entity))
     }, [])
 
     return (
@@ -35,23 +35,23 @@ const VerCarreraPage = () => {
             </table>
             <hr />
 
-            <h2>Información</h2>
+            <h2>Informacion</h2>
             <table border="1">
                 <thead>
                     <tr>
                         <th>Curso</th>
                         <th>Carrera</th>
-                        <th>Aula</th>
+                        <th>Turno</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    {sedes.map(sede=>{
+                    {aula.map(aula=>{
                         return(
-                            <tr key={sede.ID}>
-                                <td>{sede.CURSO}</td>
-                                <td>{sede.CARRERA}</td>
-                                <td>{sede.aula}</td>
+                            <tr key={aula.ID}>
+                                <td>{aula.CURSO}</td>
+                                <td>{aula.CARRERA}</td>
+                                <td>{aula.turno}</td>
                             </tr>
                         )
                     })}
@@ -61,7 +61,7 @@ const VerCarreraPage = () => {
             </table>
 
             <hr />
-            <Link to={'/ver-carrera/${id}/nueva-sede'}>Nueva Sede</Link> |
+            <Link to={'/ver-carrera/${id}/nueva-aula'}>Nueva Aula</Link> |
             <Link to="/">Volver</Link>
         </>
     )

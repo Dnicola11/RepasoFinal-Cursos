@@ -6,7 +6,6 @@ const client = require('../client');
 const NuevaCarreraPage = () => {
 
     const [nombre, setNombre] = useState('')
-    const [duracion, setDuracion] = useState('')
 
     const handleSubmit = (evento)=>{
         evento.preventDefault();
@@ -26,8 +25,6 @@ const NuevaCarreraPage = () => {
         <form onSubmit={handleSubmit}>
             <label>Nombre</label> <br />
             <input type="text" id='nombre' name='nombre' onChange={eNombre=>setNombre(eNombre.target.value)} /> <br />
-            <label>Duracion</label> <br />
-            <input type="text" id='duracion' name='duracion' onChange={eDuracion=>setDuracion(eDuracion.target.value)} /> <br />
             <input type="submit" value="Nueva Carrera" /> <br />
         </form>
         <Link to="/">Volver</Link>
