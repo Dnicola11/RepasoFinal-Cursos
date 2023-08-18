@@ -12,14 +12,12 @@ public class Curso {
     private @Id @GeneratedValue Long id;
 	private String nombre;
 	private Integer creditos;
-    private String modalidad;
 
     private Curso() {}
 
-	public Curso(String nombre, Integer creditos, String modalidad) {
+	public Curso(String nombre, Integer creditos) {
 		this.nombre = nombre;
 		this.creditos = creditos;
-        this.modalidad = modalidad;
 	}
 
 	@Override
@@ -29,13 +27,12 @@ public class Curso {
 		Curso curso = (Curso) o;
 		return Objects.equals(id, curso.id) &&
 			Objects.equals(nombre, curso.nombre) &&
-			Objects.equals(creditos, curso.creditos) &&
-            Objects.equals(modalidad, curso.modalidad);
+			Objects.equals(creditos, curso.creditos);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, nombre, creditos, modalidad);
+		return Objects.hash(id, nombre, creditos);
 	}
 
 
@@ -45,7 +42,6 @@ public class Curso {
 			"id=" + id +
 			", nombre='" + nombre + '\'' +
 			", creditos='" + creditos + '\'' +
-            ", modalidad='" + modalidad + '\'' +
 			'}';
 	}
 
@@ -73,11 +69,4 @@ public class Curso {
         this.creditos = creditos;
     }
 
-    public String getModalidad() {
-        return modalidad;
-    }
-
-    public void setModalidad(String modalidad) {
-        this.modalidad = modalidad;
-    }
 }

@@ -8,10 +8,13 @@ const VerCursoPage = () => {
     let { id } = useParams();
     const [curso, setCurso] = useState({});
 
+    
+    useEffect(()=>{
     client({
         method: 'GET',
         path: '/api/cursos/' + id
     }).done(response=>setCurso(response.entity))
+    }, [])
 
 
     return (
@@ -27,12 +30,7 @@ const VerCursoPage = () => {
                     <th>Creditos</th>
                     <td>{curso.creditos}</td>
                 </tr>
-                <tr>
-                    <th>Modalidad</th>
-                    <td>{curso.modalidad}</td>
-                </tr>
             </table>
-
             <Link to="/">Volver</Link>
         </>
     )

@@ -19,14 +19,22 @@ public class DatabaseLoader implements CommandLineRunner {
 
 	@Override
 	public void run(String... strings) throws Exception {
-		this.repositoryCu.save(new Curso("Base de Datos",3,"Semi-Presencial"));
-		this.repositoryCu.save(new Curso("Programacion I",4,"Presencial"));
-		this.repositoryCu.save(new Curso("Ingles Tecnico",2,"Virtual"));
-		this.repositoryCu.save(new Curso("Zootecnia",4,"Virtual"));
-		this.repositoryCa.save(new Carrera("Ingeneria de Sistemas", "5 años"));
-		this.repositoryCa.save(new Carrera("Veterinaria", "5 años"));
-		this.repositoryCa.save(new Carrera("Negocios Internacionales", "4 años"));
-		this.repositorySe.save(new Sede("Lima Centro", "Av. Petituars 315", "Lima"));
-		this.repositorySe.save(new Sede("Lima Sur", "Av. Pedro Miotta 950", "San Juan Miraflores"));
+		this.repositoryCu.save(new Curso("Programacion I",4));
+		this.repositoryCu.save(new Curso("Ingles Tecnico",2));
+		this.repositoryCu.save(new Curso("Zootecnia",4));
+		Curso cuMat = new Curso("Matematica Basica", 3);
+		this.repositoryCu.save(cuMat);
+		Curso cuBase = new Curso("Base de Datos", 3);
+		this.repositoryCu.save(cuBase);
+
+		Carrera caIs = new Carrera("Ingeneria de Sistemas");
+		this.repositoryCa.save(caIs);
+		Carrera caCon = new Carrera("Contabilidad");
+		this.repositoryCa.save(caCon);
+		this.repositoryCa.save(new Carrera("Negocios Internacionales"));
+
+		this.repositorySe.save(new Sede(cuBase, caIs, "A103"));
+		this.repositorySe.save(new Sede(cuMat, caCon, "A504"));
+	
 	}
 }

@@ -8,9 +8,8 @@ const VerCursoPage = require('./pages/ver-curso');
 const NuevoCursoPage = require('./pages/nuevo-curso');
 const NuevaCarreraPage = require('./pages/nueva-carrera');
 const VerCarreraPage = require('./pages/ver-carrera');
-const VerSedePage = require('./pages/ver-sede');
 const NuevaSedePage = require('./pages/nueva-sede');
-
+const EditarCursoPage = require('./pages/editar-curso');
 
 
 const router = createBrowserRouter([
@@ -19,8 +18,10 @@ const router = createBrowserRouter([
 	{ path: '/nuevo-curso', element: <NuevoCursoPage /> },
 	{ path: '/nueva-carrera', element: <NuevaCarreraPage /> },
 	{ path: '/ver-carrera/:id', element: <VerCarreraPage /> },
+	{ path: '/ver-carrera/:id/nueva-sede', element: <NuevaSedePage /> },
 	{ path: '/nueva-sede', element: <NuevaSedePage /> },
 	{ path: '/ver-sede/:id', element: <VerSedePage /> },
+	{ path: '/editar-curso/:id', element: <EditarCursoPage /> },
 ])
 
 ReactDOM.render(

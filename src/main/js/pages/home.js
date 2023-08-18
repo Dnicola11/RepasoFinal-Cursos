@@ -6,7 +6,7 @@ class HomePage extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {cursos: [], carreras:[], sedes:[]};
+		this.state = {cursos: [], carreras:[]};
 	}
 
 	componentDidMount() {
@@ -17,25 +17,24 @@ class HomePage extends React.Component {
         client({method: 'GET', path: '/api/carreras'}).done(response => {
 			this.setState({carreras: response.entity._embedded.carreras});
 		});
-
-		client({method: 'GET', path: '/api/sedes'}).done(response => {
-			this.setState({sedes: response.entity._embedded.sedes});
-		});
 	}
 
 	render() {
 		return (
 			<>
-                <h1>Semana 12 App (componente: HomePage2)</h1>
-				<Titulo entidad="Cursos" emoji="📚"/>
-				<CursoList cursos={this.state.cursos}/>
-				<Link to="/nuevo-curso">Nuevo Curso</Link>
-                <Titulo entidad="Carreras" emoji="💼"/>
-				<CarreraList carreras={this.state.carreras}/>
-                <Link to="/nueva-carrera">Nueva Carrera</Link>
-				<Titulo entidad="Sedes" emoji="🏢"/>
-				<SedeList sedes={this.state.sedes}/>
-                <Link to="/nueva-sede">Nueva Sede</Link>
+                <h1>Semana 14 App </h1>
+				<div style={  {"width": "100%", "display": "flex"}   }>
+					<div style={{"width": "calc(100% / 3)"}}>
+					<Titulo entidad="Cursos" emoji="📚"/>
+					<CursoList cursos={this.state.cursos}/>
+					<Link to="/nuevo-curso">Nuevo Curso</Link>
+					</div>
+					<div style={{"width": "calc(100% / 3)"}}>
+                	<Titulo entidad="Carreras" emoji="💼"/>
+					<CarreraList carreras={this.state.carreras}/>
+                	<Link to="/nueva-carrera">Nueva Carrera</Link>
+					</div>
+				</div>
 			</>
 		)
 	}
@@ -91,26 +90,6 @@ class CarreraList extends React.Component{
 	}
 }
 
-class SedeList extends React.Component{
-	render() {
-		const sedes = this.props.sedes.map(sede =>
-			<Sede key={sede._links.self.href} sede={sede}/>
-		);
-		return (
-			<table border="1">
-				<tbody>
-					<tr>
-						<th>Nombre</th>
-						<th>Direccion</th>
-						<th>Acciones</th>
-					</tr>
-					{sedes}
-				</tbody>
-			</table>
-		)
-	}
-}
-
 class Curso extends React.Component{
 	render() {
         const id = this.props.curso._links.self.href.split("/").slice(-1)
@@ -119,7 +98,8 @@ class Curso extends React.Component{
 				<td>{this.props.curso.nombre}</td>
 				<td>{this.props.curso.creditos}</td>
 				<td>
-					<Link to={"/ver-curso/" + id}>Ver</Link>
+					<Link to={"/ver-curso/" + id}>Ver</Link> |
+					<Link to={"/editar-curso/" + id}>Editar</Link>
 				</td>
 			</tr>
 		)
@@ -134,21 +114,6 @@ class Carrera extends React.Component{
 				<td>{this.props.carrera.nombre}</td>
 				<td>
 					<Link to={"/ver-carrera/" + id}>Ver</Link>
-				</td>
-			</tr>
-		)
-	}
-}
-
-class Sede extends React.Component{
-	render() {
-		const id = this.props.sede._links.self.href.split("/").slice(-1)
-		return (
-			<tr>
-				<td>{this.props.sede.nombre}</td>
-				<td>{this.props.sede.direccion}</td>
-				<td>
-					<Link to={"/ver-sede/" + id}>Ver</Link>
 				</td>
 			</tr>
 		)

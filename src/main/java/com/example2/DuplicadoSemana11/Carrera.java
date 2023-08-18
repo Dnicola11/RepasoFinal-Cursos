@@ -10,13 +10,11 @@ import jakarta.persistence.Id;
 public class Carrera {
     private @Id @GeneratedValue Long id;
     private String nombre;
-	private String duracion;
 
     private Carrera() {}
 
-	public Carrera(String nombre, String duracion) {
+	public Carrera(String nombre) {
 		this.nombre = nombre;
-		this.duracion = duracion;
 	}
 
 	@Override
@@ -25,15 +23,14 @@ public class Carrera {
 		if (o == null || getClass() != o.getClass()) return false;
 		Carrera carrera = (Carrera) o;
 		return Objects.equals(id, carrera.id) &&
-			Objects.equals(nombre, carrera.nombre) &&
-			Objects.equals(duracion, carrera.duracion);
+			Objects.equals(nombre, carrera.nombre);
 			
 	}
 
 	@Override
 	public int hashCode() {
 
-		return Objects.hash(id, nombre, duracion);
+		return Objects.hash(id, nombre);
 	}
 
 	@Override
@@ -41,7 +38,6 @@ public class Carrera {
 		return "Carrera{" +
 			"id=" + id +
 			", nombre='" + nombre + '\'' +
-			", duracion='" + duracion + '\'' +
 			'}';
 	}
 
@@ -61,12 +57,4 @@ public class Carrera {
 		this.nombre = nombre;
 	}
 
-    public String getDuracion() {
-        return duracion;
-    }
-
-    public void setDuracion(String duracion) {
-        this.duracion = duracion;
-    }
-    
 }
