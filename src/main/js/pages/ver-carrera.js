@@ -7,7 +7,7 @@ const VerCarreraPage = () => {
 
     let { id } = useParams();
     const [carrera, setCarrera] = useState({});
-    const [aula, setAulas] = useState([]);
+    const [aulas, setAulas] = useState([]);
 
     useEffect(() => {
         client({
@@ -46,12 +46,12 @@ const VerCarreraPage = () => {
                 </thead>
                 <tbody>
 
-                    {aula.map(aula=>{
+                    {aulas.map(aula=>{
                         return(
                             <tr key={aula.ID}>
                                 <td>{aula.CURSO}</td>
                                 <td>{aula.CARRERA}</td>
-                                <td>{aula.turno}</td>
+                                <td>{aula.TURNO}</td>
                             </tr>
                         )
                     })}

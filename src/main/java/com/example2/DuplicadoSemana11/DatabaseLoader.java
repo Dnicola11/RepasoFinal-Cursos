@@ -33,8 +33,8 @@ public class DatabaseLoader implements CommandLineRunner {
 		this.repositoryCa.save(caCon);
 		this.repositoryCa.save(new Carrera("Negocios Internacionales"));
 
-		this.repositoryA.save(new Aula(cuBase, caIs, "noche"));
-		this.repositoryA.save(new Aula(cuMat, caCon, "tarde"));
+		this.repositoryA.save(new Aula(cuBase, caIs, "NOCHE"));
+		this.repositoryA.save(new Aula(cuMat, caCon, "TARDE"));
 	
 	}
 }

@@ -10,15 +10,15 @@ const NuevaAulaPage = () => {
     const [carreras, setCarreras] = useState([])
     const [cursos, setCursos] = useState([])
 
-    const [turno, setTurno] = useState('')
     const [idCarrera, setIdCarrera] = useState('')
     const [idCurso, setIdCurso] = useState('')
+    const [turno, setTurno] = useState('')
 
     const handleSubmit = (evento)=>{
         evento.preventDefault();
         client({
             method: 'POST',
-            path: '/api/sedes',
+            path: '/api/aulas',
             entity: {
                 carrera: 'http://localhost:8080/api/carreras/'+idCarrera,
                 curso: 'http://localhost:8080/api/cursos/'+idCurso,
@@ -69,7 +69,7 @@ const NuevaAulaPage = () => {
                         )
                     })}
                 </select><br />
-                <label>Turno</label> <br />
+                <label>Turno</label>
                 <input type="text" id='turno' name='turno' onChange={e=>setTurno(e.target.value)} /> <br />
 
                 <input type="submit" value="Nueva Aula" />

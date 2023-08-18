@@ -19,3 +19,12 @@ POST {{server}}/api/sedes
 Content-Type: application/json
 
 {"nombre": "Sede Principal", "direccion": "Av. Arequipa 2063", "distrito": "Lima"}
+###
+GET {{server}}/api/ver-carrera/1
+####
+POST {{server}}/api/nueva-aula
+Content-Type: application/json
+
+{"id_curso": "Conectividad", "id_carrera": "Redes y Comunicaciones", "turno": "NOCHE"}
+###
+GET {{server}}/api/aulas

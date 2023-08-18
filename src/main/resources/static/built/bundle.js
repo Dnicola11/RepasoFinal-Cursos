@@ -40844,7 +40844,7 @@ var VerCursoPage = __webpack_require__(/*! ./pages/ver-curso */ "./src/main/js/p
 var NuevoCursoPage = __webpack_require__(/*! ./pages/nuevo-curso */ "./src/main/js/pages/nuevo-curso.js");
 var NuevaCarreraPage = __webpack_require__(/*! ./pages/nueva-carrera */ "./src/main/js/pages/nueva-carrera.js");
 var VerCarreraPage = __webpack_require__(/*! ./pages/ver-carrera */ "./src/main/js/pages/ver-carrera.js");
-var NuevaSedePage = __webpack_require__(/*! ./pages/nueva-sede */ "./src/main/js/pages/nueva-sede.js");
+var NuevaAulaPage = __webpack_require__(/*! ./pages/nueva-aula */ "./src/main/js/pages/nueva-aula.js");
 var EditarCursoPage = __webpack_require__(/*! ./pages/editar-curso */ "./src/main/js/pages/editar-curso.js");
 var router = createBrowserRouter([{
   path: '/',
@@ -40862,11 +40862,11 @@ var router = createBrowserRouter([{
   path: '/ver-carrera/:id',
   element: /*#__PURE__*/React.createElement(VerCarreraPage, null)
 }, {
-  path: '/ver-carrera/:id/nueva-sede',
-  element: /*#__PURE__*/React.createElement(NuevaSedePage, null)
+  path: '/ver-carrera/:id/nueva-aula',
+  element: /*#__PURE__*/React.createElement(NuevaAulaPage, null)
 }, {
-  path: '/nueva-sede',
-  element: /*#__PURE__*/React.createElement(NuevaSedePage, null)
+  path: '/nueva-aula',
+  element: /*#__PURE__*/React.createElement(NuevaAulaPage, null)
 }, {
   path: '/editar-curso/:id',
   element: /*#__PURE__*/React.createElement(EditarCursoPage, null)
@@ -41178,79 +41178,9 @@ module.exports = HomePage;
 
 /***/ }),
 
-/***/ "./src/main/js/pages/nueva-carrera.js":
-/*!********************************************!*\
-  !*** ./src/main/js/pages/nueva-carrera.js ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-var _require = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
-  useState = _require.useState;
-var _require2 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js"),
-  Link = _require2.Link;
-var client = __webpack_require__(/*! ../client */ "./src/main/js/client.js");
-var NuevaCarreraPage = function NuevaCarreraPage() {
-  var _useState = useState(''),
-    _useState2 = _slicedToArray(_useState, 2),
-    nombre = _useState2[0],
-    setNombre = _useState2[1];
-  var _useState3 = useState(''),
-    _useState4 = _slicedToArray(_useState3, 2),
-    duracion = _useState4[0],
-    setDuracion = _useState4[1];
-  var handleSubmit = function handleSubmit(evento) {
-    evento.preventDefault();
-    client({
-      method: 'POST',
-      path: '/api/carreras',
-      entity: {
-        nombre: nombre
-      },
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).done(function () {
-      window.location = '/';
-    });
-  };
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Nueva Carrera"), /*#__PURE__*/React.createElement("form", {
-    onSubmit: handleSubmit
-  }, /*#__PURE__*/React.createElement("label", null, "Nombre"), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
-    type: "text",
-    id: "nombre",
-    name: "nombre",
-    onChange: function onChange(eNombre) {
-      return setNombre(eNombre.target.value);
-    }
-  }), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", null, "Duracion"), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
-    type: "text",
-    id: "duracion",
-    name: "duracion",
-    onChange: function onChange(eDuracion) {
-      return setDuracion(eDuracion.target.value);
-    }
-  }), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
-    type: "submit",
-    value: "Nueva Carrera"
-  }), " ", /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement(Link, {
-    to: "/"
-  }, "Volver"));
-};
-module.exports = NuevaCarreraPage;
-
-/***/ }),
-
-/***/ "./src/main/js/pages/nueva-sede.js":
+/***/ "./src/main/js/pages/nueva-aula.js":
 /*!*****************************************!*\
-  !*** ./src/main/js/pages/nueva-sede.js ***!
+  !*** ./src/main/js/pages/nueva-aula.js ***!
   \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -41269,7 +41199,7 @@ var _require2 = __webpack_require__(/*! react-router-dom */ "./node_modules/reac
   Link = _require2.Link,
   useParams = _require2.useParams;
 var client = __webpack_require__(/*! ../client */ "./src/main/js/client.js");
-var NuevaSedePage = function NuevaSedePage() {
+var NuevaAulaPage = function NuevaAulaPage() {
   var _useParams = useParams(),
     id = _useParams.id;
   var _useState = useState([]),
@@ -41282,25 +41212,25 @@ var NuevaSedePage = function NuevaSedePage() {
     setCursos = _useState4[1];
   var _useState5 = useState(''),
     _useState6 = _slicedToArray(_useState5, 2),
-    aula = _useState6[0],
-    setAula = _useState6[1];
+    idCarrera = _useState6[0],
+    setIdCarrera = _useState6[1];
   var _useState7 = useState(''),
     _useState8 = _slicedToArray(_useState7, 2),
-    idCarrera = _useState8[0],
-    setIdCarrera = _useState8[1];
+    idCurso = _useState8[0],
+    setIdCurso = _useState8[1];
   var _useState9 = useState(''),
     _useState10 = _slicedToArray(_useState9, 2),
-    idCurso = _useState10[0],
-    setIdCurso = _useState10[1];
+    turno = _useState10[0],
+    setTurno = _useState10[1];
   var handleSubmit = function handleSubmit(evento) {
     evento.preventDefault();
     client({
       method: 'POST',
-      path: '/api/sedes',
+      path: '/api/aulas',
       entity: {
         carrera: 'http://localhost:8080/api/carreras/' + idCarrera,
         curso: 'http://localhost:8080/api/cursos/' + idCurso,
-        aula: aula
+        turno: turno
       },
       headers: {
         'Content-Type': 'application/json'
@@ -41351,21 +41281,80 @@ var NuevaSedePage = function NuevaSedePage() {
       key: value,
       value: value
     }, "(", curso.nombre, ")");
-  })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", null, "Aula"), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
+  })), /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("label", null, "Turno"), /*#__PURE__*/React.createElement("input", {
     type: "text",
-    id: "aula",
-    name: "aula",
+    id: "turno",
+    name: "turno",
     onChange: function onChange(e) {
-      return setAula(e.target.value);
+      return setTurno(e.target.value);
     }
   }), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
     type: "submit",
-    value: "Nueva Sede"
+    value: "Nueva Aula"
   })), /*#__PURE__*/React.createElement(Link, {
     to: "/"
   }, "Volver"));
 };
-module.exports = NuevaSedePage;
+module.exports = NuevaAulaPage;
+
+/***/ }),
+
+/***/ "./src/main/js/pages/nueva-carrera.js":
+/*!********************************************!*\
+  !*** ./src/main/js/pages/nueva-carrera.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+var _require = __webpack_require__(/*! react */ "./node_modules/react/index.js"),
+  useState = _require.useState;
+var _require2 = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js"),
+  Link = _require2.Link;
+var client = __webpack_require__(/*! ../client */ "./src/main/js/client.js");
+var NuevaCarreraPage = function NuevaCarreraPage() {
+  var _useState = useState(''),
+    _useState2 = _slicedToArray(_useState, 2),
+    nombre = _useState2[0],
+    setNombre = _useState2[1];
+  var handleSubmit = function handleSubmit(evento) {
+    evento.preventDefault();
+    client({
+      method: 'POST',
+      path: '/api/carreras',
+      entity: {
+        nombre: nombre
+      },
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).done(function () {
+      window.location = '/';
+    });
+  };
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Nueva Carrera"), /*#__PURE__*/React.createElement("form", {
+    onSubmit: handleSubmit
+  }, /*#__PURE__*/React.createElement("label", null, "Nombre"), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    id: "nombre",
+    name: "nombre",
+    onChange: function onChange(eNombre) {
+      return setNombre(eNombre.target.value);
+    }
+  }), " ", /*#__PURE__*/React.createElement("br", null), /*#__PURE__*/React.createElement("input", {
+    type: "submit",
+    value: "Nueva Carrera"
+  }), " ", /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement(Link, {
+    to: "/"
+  }, "Volver"));
+};
+module.exports = NuevaCarreraPage;
 
 /***/ }),
 
@@ -41470,8 +41459,8 @@ var VerCarreraPage = function VerCarreraPage() {
     setCarrera = _useState2[1];
   var _useState3 = useState([]),
     _useState4 = _slicedToArray(_useState3, 2),
-    sedes = _useState4[0],
-    setSedes = _useState4[1];
+    aulas = _useState4[0],
+    setAulas = _useState4[1];
   useEffect(function () {
     client({
       method: 'GET',
@@ -41481,22 +41470,22 @@ var VerCarreraPage = function VerCarreraPage() {
     });
     client({
       method: 'GET',
-      path: '/api/sedes/' + id + '/informacion'
+      path: '/api/aulas/' + id + '/informacion'
     }).done(function (response) {
-      return setSedes(response.entity);
+      return setAulas(response.entity);
     });
   }, []);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "Ver Carrera"), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("table", {
     border: "1"
-  }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombre"), /*#__PURE__*/React.createElement("td", null, carrera.nombre)))), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("h2", null, "Informaci\xF3n"), /*#__PURE__*/React.createElement("table", {
+  }, /*#__PURE__*/React.createElement("tbody", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Nombre"), /*#__PURE__*/React.createElement("td", null, carrera.nombre)))), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement("h2", null, "Informacion"), /*#__PURE__*/React.createElement("table", {
     border: "1"
-  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Curso"), /*#__PURE__*/React.createElement("th", null, "Carrera"), /*#__PURE__*/React.createElement("th", null, "Aula"))), /*#__PURE__*/React.createElement("tbody", null, sedes.map(function (sede) {
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Curso"), /*#__PURE__*/React.createElement("th", null, "Carrera"), /*#__PURE__*/React.createElement("th", null, "Turno"))), /*#__PURE__*/React.createElement("tbody", null, aulas.map(function (aula) {
     return /*#__PURE__*/React.createElement("tr", {
-      key: sede.ID
-    }, /*#__PURE__*/React.createElement("td", null, sede.CURSO), /*#__PURE__*/React.createElement("td", null, sede.CARRERA), /*#__PURE__*/React.createElement("td", null, sede.aula));
+      key: aula.ID
+    }, /*#__PURE__*/React.createElement("td", null, aula.CURSO), /*#__PURE__*/React.createElement("td", null, aula.CARRERA), /*#__PURE__*/React.createElement("td", null, aula.TURNO));
   }))), /*#__PURE__*/React.createElement("hr", null), /*#__PURE__*/React.createElement(Link, {
-    to: '/ver-carrera/${id}/nueva-sede'
-  }, "Nueva Sede"), " |", /*#__PURE__*/React.createElement(Link, {
+    to: '/ver-carrera/${id}/nueva-aula'
+  }, "Nueva Aula"), " |", /*#__PURE__*/React.createElement(Link, {
     to: "/"
   }, "Volver"));
 };
