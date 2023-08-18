@@ -21,6 +21,8 @@ public class Aula {
 
 	private String turno;
 
+	public Aula() {}
+
     public Aula(Curso curso, Carrera carrera, String turno) {
         this.curso = curso;
         this.carrera = carrera;
